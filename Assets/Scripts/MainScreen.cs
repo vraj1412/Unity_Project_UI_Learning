@@ -6,50 +6,68 @@ public class MainScreen : MonoBehaviour
 {
     public void SessionPass()
     {
-        Debug.Log("Session Pass Opened..");
+        DebugDemo.Log("Session Pass Opened..");
     }
     public void heroes()
     {
-        Debug.Log("Heroes Opened..");
+        DebugDemo.Log("Heroes Opened..");
     }
     public void eqipment()
     {
-        Debug.Log("Eqipment Opened..");
+        DebugDemo.Log("Eqipment Opened..");
     }
     public void artifact()
     {
-        Debug.Log("Artifact Opened..");
+        DebugDemo.Log("Artifact Opened..");
     }
     public void upgrade()
     {
-        Debug.Log("Upgrade Opened..");
+        DebugDemo.Log("Upgrade Opened..");
     }
     public void shop()
     {
-        Debug.Log("Shop Opened..");
+        DebugDemo.Log("Shop Opened..");
     }
     public void world()
     {
-        Debug.Log("World Opened..");
+        DebugDemo.Log("World Opened..");
     }
     public void Start()
     {
-        Debug.Log("Start Opened..");
+        DebugDemo.Log("Start Opened..");
     }
     public void mission()
     {
-        Debug.Log("Mission Opened..");
+        DebugDemo.Log("Mission Opened..");
     }
     public void club()
     {
-        Debug.Log("Club Opened..");
+        DebugDemo.Log("Club Opened..");
     }
     public void ranking()
     {
-        Debug.Log("Ranking Opened..");
+        DebugDemo.Log("Ranking Opened..");
     }
     public void setting()
     {
-        Debug.Log("Setting Opened..");
+        DebugDemo.Log("Setting Opened..");
     }
+}
+
+
+public static class DebugDemo
+{
+    public static void Log(string Str)
+    {
+        Debug.Log(Str);
+    }
+
+    public static void LogWarning(string Str)
+    {
+        Debug.LogWarning(Str);
+    }public static void LogError(string Str)
+    {
+        Debug.LogError(Str);
+    }
+
 }
