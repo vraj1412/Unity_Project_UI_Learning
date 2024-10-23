@@ -52,10 +52,15 @@ public class MainScreen : MonoBehaviour
     {
         DebugDemo.Log("Setting Opened..");
     }
+
+    public void CheckMerge ()
+    {
+        DebugDemo.Log("Merge is done");
+    }
 }
 
 
-public static class DebugDemo
+    public static class DebugDemo
 {
     public static void Log(string Str)
     {
