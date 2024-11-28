@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MainScreen : MonoBehaviour
 {
+
+
+   
+
     public void SessionPass()
     {
         DebugDemo.Log("Session Pass Opened..");
