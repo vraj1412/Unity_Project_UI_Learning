@@ -40,22 +40,13 @@ public class UiManager : MonoBehaviour
 
         //musicAndSoundManager = MusicAndSoundManager.instance;
 
-        MusicButton.onClick.AddListener(MusicButtonClick);
-        SoundButton.onClick.AddListener(SoundButtonClick);
+       
     
       //  MusicButton.r
     }
 
 
-    public void SoundButtonClick()
-    {
-        Debug.Log("SoundButtonClick");
-    }
-
-    public void MusicButtonClick()
-    {
-        Debug.Log("MusicButtonClick");
-    }
+   
 
 
     public void ButtonControl(string button)

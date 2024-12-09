@@ -14,7 +14,25 @@ public class MusicAndSoundManager : MonoBehaviour
     public AudioClip BGMusic;
     public AudioClip sound;
 
+    public void ButtonControl(string button)
+    {
 
+        switch (button)
+        {
+            case "Sound_Mute":
+                Mutesound();
+                break;
+            case "Music_Mute":
+                Mutemusic();
+                break;
+            case "Unmute_sound":
+                Unmutesound(); 
+                break;
+            case "Unmute_music":
+                Unmutemusic();
+                break;
+        }
+    }
     public void Awake()
     {
         volumeSlider.value = StaticData.Sound;
@@ -31,7 +49,7 @@ public class MusicAndSoundManager : MonoBehaviour
         PlaySound();
         
     }
-
+    #region sound
     public void Sound()
     {
 
@@ -49,6 +67,10 @@ public class MusicAndSoundManager : MonoBehaviour
         volumeSlider.value = StaticData.Sound;
         SoundAudioSource.volume = StaticData.Sound;
     }
+
+    #endregion
+
+    #region music
     public void Music()
     {
 
@@ -59,7 +81,7 @@ public class MusicAndSoundManager : MonoBehaviour
 
     public void PlayMusic()
     { 
-           MusicAudioSource.clip = BGMusic;
+        MusicAudioSource.clip = BGMusic;
         MusicAudioSource.Play();
     }
     public void Load_Music()
@@ -68,4 +90,29 @@ public class MusicAndSoundManager : MonoBehaviour
         MusicAudioSource.volume = StaticData.Music;
     }
 
+    #endregion
+
+    public void Mutesound()
+    {
+        Debug.Log("Mute Sound Press");
+        SoundAudioSource.Pause();
+    }
+    public void Mutemusic() { 
+
+
+        Debug.Log("Mute Music Press");
+        MusicAudioSource.Pause();
+    }
+    public void Unmutesound()
+    {
+        Debug.Log("Unmute Sound Press");
+
+        SoundAudioSource.UnPause();
+    }
+    public void Unmutemusic()
+    {
+        Debug.Log("Unmute Music Press");
+
+        MusicAudioSource.UnPause();
+    }
 }
