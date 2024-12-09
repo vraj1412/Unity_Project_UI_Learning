@@ -12,81 +12,42 @@ public class MusicAndSoundManager : MonoBehaviour
     public Slider volumeSlider;
     public Slider musicSlider;
     public AudioClip BGMusic;
+    public AudioClip sound;
 
 
     public void Awake()
     {
         volumeSlider.value = StaticData.Sound;
+        musicSlider.value = StaticData.Music;
        
     }
     void Start()
     {
-        /* if (!PlayerPrefs.HasKey("soundVolume") )
-         {
-             PlayerPrefs.SetFloat ("soundVolume", 1);
-         }
-         volumeLoad();
-
-         if(!PlayerPrefs.HasKey("musciVolume"))
-         {
-             PlayerPrefs.SetFloat("musicVolume", 1);
-         }
-         musicLoad();*/
+        
         Load_Music();
         PlayMusic();
+
+        Load_sound();
+        PlaySound();
         
     }
-  //  #region sound
-
-
-   /* public void ChangeVolume()
-    {
-        AudioListener.volume = volumeSlider.value;
-        volumeSave();
-    }
-
-    private void volumeSave()
-    {
-        PlayerPrefs.SetFloat("soundVolume", volumeSlider.value);
-        
-    }
-    private void volumeLoad() {
-       
-        volumeSlider.value = PlayerPrefs.GetFloat("soundVolume", volumeSlider.value);
-    }
-
-    #endregion
-
-
-
-
-
-
-
-    #region music
-    public void ChangeMusic()
-    {
-        AudioListener.volume = musicSlider.value;
-        musicSave();
-    }
-    private void musicSave()
-    {
-        PlayerPrefs.SetFloat("musciVolume", musicSlider.value);
-         
-    }
-    private void musicLoad()
-    {
-
-        musicSlider.value = PlayerPrefs.GetFloat("musciVolume", musicSlider.value);
-    }
-    #endregion*/
-
 
     public void Sound()
     {
 
         StaticData.Sound = volumeSlider.value;
+        SoundAudioSource.volume = volumeSlider.value;
 
+    }
+    public void PlaySound()
+    {
+        SoundAudioSource.clip = sound;
+        SoundAudioSource.Play();
+    }
+    public void Load_sound()
+    {
+        volumeSlider.value = StaticData.Sound;
+        SoundAudioSource.volume = StaticData.Sound;
     }
     public void Music()
     {
