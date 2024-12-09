@@ -1,104 +1,110 @@
-using System;
+using System ;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicAndSoundManager : MonoBehaviour
 {
     public AudioSource SoundAudioSource;
     public AudioSource MusicAudioSource;
+    public Slider volumeSlider;
+    public Slider musicSlider;
+    public AudioClip BGMusic;
 
-    public static MusicAndSoundManager instance;
-
-
-
-    #region Unity Function
 
     public void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        volumeSlider.value = StaticData.Sound;
+       
+    }
+    void Start()
+    {
+        /* if (!PlayerPrefs.HasKey("soundVolume") )
+         {
+             PlayerPrefs.SetFloat ("soundVolume", 1);
+         }
+         volumeLoad();
+
+         if(!PlayerPrefs.HasKey("musciVolume"))
+         {
+             PlayerPrefs.SetFloat("musicVolume", 1);
+         }
+         musicLoad();*/
+        Load_Music();
+        PlayMusic();
+        
+    }
+  //  #region sound
+
+
+   /* public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        volumeSave();
     }
 
-    public void Start()
+    private void volumeSave()
     {
-        StartSetData();
+        PlayerPrefs.SetFloat("soundVolume", volumeSlider.value);
+        
     }
+    private void volumeLoad() {
+       
+        volumeSlider.value = PlayerPrefs.GetFloat("soundVolume", volumeSlider.value);
+    }
+
     #endregion
 
-    #region Get/Set Data 
-    public void StartSetData()
+
+
+
+
+
+
+    #region music
+    public void ChangeMusic()
     {
-        SetSound_Volume(1);
-        SetMusic_Volume(1);
+        AudioListener.volume = musicSlider.value;
+        musicSave();
+    }
+    private void musicSave()
+    {
+        PlayerPrefs.SetFloat("musciVolume", musicSlider.value);
+         
+    }
+    private void musicLoad()
+    {
+
+        musicSlider.value = PlayerPrefs.GetFloat("musciVolume", musicSlider.value);
+    }
+    #endregion*/
+
+
+    public void Sound()
+    {
+
+        StaticData.Sound = volumeSlider.value;
+
+    }
+    public void Music()
+    {
+
+        StaticData.Music = musicSlider.value;
+        MusicAudioSource.volume = musicSlider.value;
+
     }
 
-    private void SetSound_Volume(object sound)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-
-    #region Sound Function
-    public void PlaySound(AudioClip clip)
-    {
-        SoundAudioSource.clip = clip;
-        SoundAudioSource.Play();
-    }
-
-
-    public void SoundMute(bool mute)
-    {
-
-        SoundAudioSource.mute = mute;
-    }
-    public void SetSound_Volume(float Volume)
-    {
-        SoundAudioSource.volume = Volume;
-    }
-    #endregion
-
-    #region Music Function
-    public void PlayMusic(AudioClip clip)
-    {
-        MusicAudioSource.clip = clip;
+    public void PlayMusic()
+    { 
+           MusicAudioSource.clip = BGMusic;
         MusicAudioSource.Play();
     }
-
-    public void MuiscMute(bool mute)
+    public void Load_Music()
     {
-        MusicAudioSource.mute = mute;
+        musicSlider.value = StaticData.Music;
+        MusicAudioSource.volume = StaticData.Music;
     }
 
-    public void SetMusic_Volume(float Volume)
-    {
-        MusicAudioSource.volume = Volume;
-    }
-    #endregion
-
-
-
-
-    #region Other Function
-    public void PauseSoundAndMusic(bool IsPuse)
-    {
-        if (IsPuse)
-        {
-            SoundAudioSource.Pause();
-            MusicAudioSource.Pause();
-        }
-        else
-        {
-            SoundAudioSource.UnPause();
-            MusicAudioSource.UnPause();
-        }
-    }
-    #endregion
 }

@@ -23,6 +23,9 @@ public class UiManager : MonoBehaviour
     public GameObject PopUp;
     public GameObject PopUpBg;
 
+    public Button MusicButton;
+    public Button SoundButton;
+
 
     public MusicAndSoundManager musicAndSoundManager;
     //SoundAndMusic SoundMusic;
@@ -35,8 +38,23 @@ public class UiManager : MonoBehaviour
 
         //  SoundMusic = SoundAndMusic.instance;
 
-        musicAndSoundManager = MusicAndSoundManager.instance;
+        //musicAndSoundManager = MusicAndSoundManager.instance;
 
+        MusicButton.onClick.AddListener(MusicButtonClick);
+        SoundButton.onClick.AddListener(SoundButtonClick);
+    
+      //  MusicButton.r
+    }
+
+
+    public void SoundButtonClick()
+    {
+        Debug.Log("SoundButtonClick");
+    }
+
+    public void MusicButtonClick()
+    {
+        Debug.Log("MusicButtonClick");
     }
 
 
