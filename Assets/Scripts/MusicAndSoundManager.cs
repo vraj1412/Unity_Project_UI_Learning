@@ -115,4 +115,8 @@ public class MusicAndSoundManager : MonoBehaviour
 
         MusicAudioSource.UnPause();
     }
+    public void Musicmain()
+    {
+       
+    }
 }
