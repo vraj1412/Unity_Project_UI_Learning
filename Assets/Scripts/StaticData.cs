@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticData 
+public class StaticData
 {
     public static float Sound
     {
@@ -16,6 +16,7 @@ public class StaticData
             PlayerPrefs.Save();
         }
     }
+
     public static float Music
     {
         get
@@ -27,6 +28,34 @@ public class StaticData
         {
             PlayerPrefs.SetFloat("Music", value);
             PlayerPrefs.Save();
+        }
+    }
+
+    public static int MuteMusic
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("MuteMusic", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("MuteMusic", value);
+            PlayerPrefs.Save();
+
+        }
+    }
+
+    public static int MuteSound
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("MuteSound", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("MuteSound", value);
+            PlayerPrefs.Save();
+
         }
     }
 }
