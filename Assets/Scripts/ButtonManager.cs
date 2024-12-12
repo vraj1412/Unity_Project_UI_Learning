@@ -6,16 +6,20 @@ public class ButtonManager : MonoBehaviour
 {
     [Header("Ref_")]
     public UiManager Ref_UiManager;
-    [HideInInspector]
-    public SoundAndMusic SoundAndMusic;
+   
+    public SoundAndMusic soundandmusic;
 
     public void Start()
     {
-        SoundAndMusic = SoundAndMusic.instance;
+         soundandmusic = SoundAndMusic.instance;
     }
     public void ButtonControl(string button)
     {
-        SoundAndMusic.PlaySound(Ref_UiManager.Button_Clip);
+        //Debug.Log("sound and music check"+soundandmusic);
+        //Debug.Log("Ui Manager check" +Ref_UiManager);
+        //Debug.Log("Ref Of Buttonclip check" +Ref_UiManager.Button_Clip);
+
+        soundandmusic.PlaySound(Ref_UiManager.Button_Clip);
 
         switch (button)
         {

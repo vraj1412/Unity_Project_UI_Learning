@@ -25,47 +25,31 @@ public class UiManager : MonoBehaviour
     public AudioClip Button_Clip;
     public AudioClip BgMusic_Clip;
 
-    //SoundAndMusic SoundMusic;
 
+    public SoundAndMusic Ref_SoundAndMusicManager;
+    
+
+    
     public void Start()
     {
+        Ref_SoundAndMusicManager = SoundAndMusic.instance;
+
         SoundSlider.value = StaticData.Sound;
         MusicSlider.value = StaticData.Music;
-        SetSoundAndMusic();
 
-        //  SoundMusic = SoundAndMusic.instance;
-        SoundAndMusic.instance.PlayMusic(BgMusic_Clip);
+        SetSoundAndMusicValue();
+        Ref_SoundAndMusicManager.PlayMusic(BgMusic_Clip);
     }
 
-
-   /* public void ButtonControl(string button)
-    {
-        SoundAndMusic.instance.PlaySound(Button_Clip);
-
-        switch (button)
-        {
-           
-            case "Sound":
-                Sound_Slidar();
-                break;
-            case "Music":
-                Music_Slidar();
-                break;
-            case "Sound_Mute":
-                Sound_Icon();
-                break;
-            case "Music_Mute":
-                Music_Icon();
-                break;
-        }
-    }*/
     public void Sound_Slidar()
     {
         StaticData.Sound = SoundSlider.value;
-        //soundandmusic.SoundAudioSource.volume = SoundSlider.value;
-        SoundAndMusic.instance.SetSound_Volume(SoundSlider.value);
+        
+        Ref_SoundAndMusicManager.SetSound_Volume(SoundSlider.value);
         if (StaticData.Sound == 0)
+            
         {
+            
             SoundMute(true);
         }
         else
@@ -77,10 +61,11 @@ public class UiManager : MonoBehaviour
     public void Music_Slidar()
     {
         StaticData.Music = MusicSlider.value;
-        SoundAndMusic.instance.SetMusic_Volume(MusicSlider.value);
-        // soundandmusic.MusicAudioSource.volume = MusicSlider.value;
+        Ref_SoundAndMusicManager.SetMusic_Volume(MusicSlider.value);
+        
         if (StaticData.Music == 0)
         {
+           
             MusicMute(true);
         }
         else
@@ -121,13 +106,14 @@ public class UiManager : MonoBehaviour
         {
             StaticData.MuteSound = 1;
             SoundImage.sprite = MuteSoundSprite;
-            SoundAndMusic.instance.SoundMute(true);
+            Ref_SoundAndMusicManager.SoundMute(true);
+            SoundSlider.value = 0;
         }
         else
         {
             StaticData.MuteSound = 0;
             SoundImage.sprite = SoundSprite;
-            SoundAndMusic.instance.SoundMute(false);
+            Ref_SoundAndMusicManager.SoundMute(false);
         }
     }
 
@@ -137,34 +123,24 @@ public class UiManager : MonoBehaviour
         {
             StaticData.MuteMusic = 1;
             MusicImage.sprite = MuteMusicSprite;
-            SoundAndMusic.instance.MuiscMute(true);
+            Ref_SoundAndMusicManager.MuiscMute(true);
+            MusicSlider.value = 0;
         }
         else
         {
             StaticData.MuteMusic = 0;
             MusicImage.sprite = MusicSprite;
-            SoundAndMusic.instance.MuiscMute(false);
+            Ref_SoundAndMusicManager.MuiscMute(false);
+            MusicSlider.value = StaticData.Music;
         }
     }
 
-    public void SetSoundAndMusic()
+    public void SetSoundAndMusicValue()
     {
-        if (StaticData.MuteSound == 0)
-        {
-            SoundMute(false);
-        }
-        else
-        {
-            SoundMute(true);
-        }
+       
+        SoundMute(StaticData.MuteSound != 0);
+       MusicMute(StaticData.MuteMusic != 0);
+        
 
-        if (StaticData.MuteMusic == 0)
-        {
-            MusicMute(false);
-        }
-        else
-        {
-            MusicMute(true);
-        }
     }
 }
