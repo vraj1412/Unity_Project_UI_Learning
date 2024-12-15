@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StaticData
 {
+    #region Sound Get Set Data 
     public static float Sound
     {
         get
@@ -16,6 +17,23 @@ public class StaticData
             PlayerPrefs.Save();
         }
     }
+    
+    public static int MuteSound
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("MuteSound", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("MuteSound", value);
+            PlayerPrefs.Save();
+
+        }
+    }
+    #endregion
+
+    #region Music Get Set Data 
 
     public static float Music
     {
@@ -44,18 +62,6 @@ public class StaticData
 
         }
     }
+    #endregion
 
-    public static int MuteSound
-    {
-        get
-        {
-            return PlayerPrefs.GetInt("MuteSound", 0);
-        }
-        set
-        {
-            PlayerPrefs.SetInt("MuteSound", value);
-            PlayerPrefs.Save();
-
-        }
-    }
 }
