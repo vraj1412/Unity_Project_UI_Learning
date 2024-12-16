@@ -62,24 +62,6 @@ public class StaticData
 
         }
     }
-<<<<<<< Updated upstream
     #endregion
 
-=======
-
-    public static int MuteSound
-    {
-        get
-        {
-            return PlayerPrefs.GetInt("MuteSound", 0);
-        }
-        set
-        {
-            PlayerPrefs.SetInt("MuteSound", value);
-            PlayerPrefs.Save();
-
-
-        }
-    }
->>>>>>> Stashed changes
 }

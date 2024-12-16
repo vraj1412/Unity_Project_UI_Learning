@@ -98,7 +98,7 @@ public class MusicAndSoundManager : MonoBehaviour
         musicSlider.value = StaticData.Music;
         MusicAudioSource.volume = StaticData.Music;
     }
-    public void MuiscMute(bool mute)
+    public void MusicMute(bool mute)
     {
         MusicAudioSource.mute = mute;
     }
